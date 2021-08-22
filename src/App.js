@@ -1,4 +1,4 @@
-import logo from './static/images/logo.svg';
+import greek_key_logo_01 from './static/images/logo350.png';
 import './static/css/App.css';
 
 // debugger; This will cause the app to pause in chrome
@@ -6,8 +6,8 @@ import './static/css/App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header className="App-header Background-01">
+        <img src={greek_key_logo_01} className="App-logo" alt="logo"/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
