@@ -1,0 +1,10 @@
+
+.container {
+  background: #333;
+  height: 10vh;
+  color: white;
+}
+
+#copyrights {
+  margin: 20px;
+}

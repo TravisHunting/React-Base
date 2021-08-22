@@ -1,0 +1,17 @@
+
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  text-decoration: none;
+  display: inline-flex;
+  margin: 10px 20px;
+}
+
+#navbar {
+  background: #333;
+  color: white;
+  height: fit-content;
+}
