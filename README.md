@@ -5,8 +5,6 @@ https://guilfordjournals.com/doi/abs/10.1521/pedi.1992.6.4.343 <br>
 https://pubmed.ncbi.nlm.nih.gov/17983306/ <br>
 https://courses.jordanbpeterson.com/personality <br>
 
-<br>
-
 ## **Hot Reloading**
 
 I recommend using nodemon for hot reloading during development
@@ -14,10 +12,9 @@ I recommend using nodemon for hot reloading during development
 
 ## **Debugging**
 
-[VS Code Instructions](https://create-react-app.dev/docs/setting-up-your-editor/#debugging-in-the-editor)
- - Install the Chrome Debugger Extension for VS Code - https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome
+### [VS Code Instructions](https://create-react-app.dev/docs/setting-up-your-editor/#debugging-in-the-editor)
+ - Install the VS Code [Chrome Debugger Extension](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
  - Edit the launch.json file in your .vscode folder to contain the following:
-
  ```
  {
   "version": "0.2.0",
@@ -38,6 +35,7 @@ I recommend using nodemon for hot reloading during development
  - Run the app by using "npm start"
  - Debug by pressing F5 in VS Code
 
+*Additionally, you can use the "debugger" keyword which will cause your browser to pause and begin debuggin upon evaluation. Note: I don't think this works in JSX, so make sure to place the statement accordingly.*
 <br>
 
 ## **Boilerplate:**
