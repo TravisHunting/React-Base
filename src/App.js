@@ -1,5 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './static/images/logo.svg';
+import './static/css/App.css';
+
+// debugger; This will cause the app to pause in chrome
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React NOW!!!!
         </a>
       </header>
     </div>
