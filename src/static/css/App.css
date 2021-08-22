@@ -1,15 +1,4 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .logo-splash {
-  width: 50%;
-  height: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -31,16 +20,16 @@
 
 .logo-left {
   position: absolute;
-  left: 42%;
+  left: 45%;
   top: 50%;
-  transform: translate(-58%, -50%);
+  transform: translate(-55%, -50%);
 }
 
 .logo-right {
   position: absolute;
-  left: 58%;
+  left: 55%;
   top: 50%;
-  transform: translate(-42%, -50%);
+  transform: translate(-45%, -50%);
 }
 
 .moderate-size {
@@ -65,11 +54,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.Background-01 {
-  background-color: #282c34;
-  z-index: -10;
 }
 
 .App-link {

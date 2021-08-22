@@ -4,7 +4,7 @@ import '../static/css/App.css';
 
 function LogoSplash() {
   return (
-    <div className="logo-splash">
+    <div>
 
         <div className="logo-left" >
         <img src={logo01} className="spin moderate-size" alt="logo"/>

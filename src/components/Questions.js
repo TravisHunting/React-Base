@@ -36,5 +36,3 @@ export const questions = [
         ],
     },
 ];
-
-// export {questions};
