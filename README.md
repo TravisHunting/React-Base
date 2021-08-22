@@ -35,7 +35,7 @@ I recommend using nodemon for hot reloading during development
  - Run the app by using "npm start"
  - Debug by pressing F5 in VS Code
 
-*Additionally, you can use the "debugger" keyword which will cause your browser to pause and begin debuggin upon evaluation. Note: I don't think this works in JSX, so make sure to place the statement accordingly.*
+*Additionally, you can use the "debugger" keyword which will cause your browser to pause and begin debuggin upon evaluation. Note: in JSX portions you use "{debugger}".*
 <br>
 
 ## **Boilerplate:**

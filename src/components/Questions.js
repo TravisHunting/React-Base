@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+
+
 export const questions = [
     {
         questionText: 'What is the capital of France?',
@@ -36,3 +39,19 @@ export const questions = [
         ],
     },
 ];
+
+export function QuestionDisplay(props) {
+    return (
+      <div>
+
+        <div>{questions[props.questionNumber].questionText}</div>
+
+        {questions[props.questionNumber].answerOptions.map((answer,idx) => (
+            <li id={"Q" + props.questionNumber.toString() + "A" + idx.toString()} 
+            key={"Q" + props.questionNumber.toString() + "A" + idx.toString()}>
+                {answer.answerText}</li>
+        ))}
+
+      </div>
+    );
+  }
