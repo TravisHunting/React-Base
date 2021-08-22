@@ -1,15 +1,18 @@
-# Getting Started with Create React App
+# React Quiz App
 
-This project was bootstrapped with create-react-app
- - "npx create-react-app 0-react-quiz"
+Resources: <br>
+https://guilfordjournals.com/doi/abs/10.1521/pedi.1992.6.4.343 <br>
+https://pubmed.ncbi.nlm.nih.gov/17983306/ <br>
+https://courses.jordanbpeterson.com/personality <br>
 
+<br>
 
-## Hot Reloading
+## **Hot Reloading**
 
 I recommend using nodemon for hot reloading during development
  - "nodemon App.js"
 
-## Debugging
+## **Debugging**
 
 [VS Code Instructions](https://create-react-app.dev/docs/setting-up-your-editor/#debugging-in-the-editor)
  - Install the Chrome Debugger Extension for VS Code - https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome
@@ -35,7 +38,16 @@ I recommend using nodemon for hot reloading during development
  - Run the app by using "npm start"
  - Debug by pressing F5 in VS Code
 
-## Available Scripts
+<br>
+
+## **Boilerplate:**
+
+This project was bootstrapped with create-react-app
+ - "npx create-react-app 0-react-quiz"
+
+**Note: I have removed the test and webvitals features that create-react-app adds by default**
+
+### `Available Scripts`
 
 In the project directory, you can run:
 
