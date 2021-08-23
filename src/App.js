@@ -1,5 +1,5 @@
 import './static/css/App.css';
-import LogoSplash from './components/LogoSplash/LogoSplash';
+import { LogoSplash , LogoSplash2 } from './components/LogoSplash/LogoSplash';
 import { QuestionDisplay } from './components/Questions';
 import React, { useState } from 'react';
 
@@ -16,7 +16,6 @@ function App() {
   } else {
     content = "";
   }
-
 
   return (
     //<Navbar />

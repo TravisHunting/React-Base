@@ -1,4 +1,4 @@
-/* .App-header {
+.App-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -6,8 +6,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-} */
-
+}
 
 /* MAIN */
 .App-body {
@@ -25,10 +24,26 @@
   color: #61dafb;
 }
 
-
 /* UTILITIES */
 .container {
   max-width: 80%;
+}
+
+.fullcenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.verticalcenter {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.moderate-size {
+  max-width: 33vh;
 }
 
 /* Demonstrate Scale Down */
