@@ -11,10 +11,13 @@ function App() {
   // use a state hook to hide or display a component
   // this removes the HTML completely from the browser
   let content;
+  let quizContent;
   if (logoVisible) {
-    content = <LogoSplash/>
+    content = <LogoSplash/>;
+    quizContent = "";
   } else {
     content = "";
+    quizContent = <QuestionDisplay questionNumber={questionNumber} />;
   }
 
   return (
@@ -22,14 +25,14 @@ function App() {
 
     <div className="App-body">
       <h1>Big Time Quiz Time</h1>
-      <div class="container">
+      <div className="container">
         {content}
 
         {/* use the style+display to show or hide the component */}
         {/* this leaves the HTML in the browser  */}
         {/* <div className="" style={{ display: !logoVisible ? "" : "none" }}>
           <QuestionDisplay questionNumber={questionNumber} />
-        </div>
+  </div> */}
 
         <button
           style={{
@@ -41,11 +44,18 @@ function App() {
           onClick={() => setLogoVisible(!logoVisible)}
         >
           CLICK TO BEGIN
-        </button> */}
+        </button> 
+
       </div>
+
+      <div className="container">
+      {quizContent}
+        </div> 
+
+
       <h2>Quiz out Baby....</h2>
 
-      <div class="testDiv">{content}</div>
+      <div className="testDiv">{content}</div>
     </div>
 
     //<Footer />

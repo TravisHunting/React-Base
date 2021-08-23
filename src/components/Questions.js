@@ -40,6 +40,14 @@ export const questions = [
     },
 ];
 
+function CheckAnswer(id) {
+    let data = id.split(".");
+    let questionNumber = data[1];
+    let answerNumber = data[3];
+    console.log(questions[questionNumber].answerOptions[answerNumber].isCorrect);
+    return questions[questionNumber].answerOptions[answerNumber].isCorrect;
+}
+
 export function QuestionDisplay(props) {
     return (
       <div>
@@ -47,9 +55,12 @@ export function QuestionDisplay(props) {
         <div>{questions[props.questionNumber].questionText}</div>
 
         {questions[props.questionNumber].answerOptions.map((answer,idx) => (
-            <li id={"Q" + props.questionNumber.toString() + "A" + idx.toString()}
-            key={"Q" + props.questionNumber.toString() + "A" + idx.toString()}>
-                {answer.answerText}</li>
+            <button 
+            id={"Q." + props.questionNumber.toString() + ".A." + idx.toString()}
+            key={"Q." + props.questionNumber.toString() + ".A." + idx.toString()} 
+            onClick={CheckAnswer.bind(this, "Q." + props.questionNumber.toString() + ".A." + idx.toString())}
+            >
+                {answer.answerText}</button>
         ))}
 
       </div>
