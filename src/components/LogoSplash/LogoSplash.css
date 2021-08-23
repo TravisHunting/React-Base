@@ -1,0 +1,45 @@
+
+
+.logo-container {
+  border: 5px white solid;
+  border-radius: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.logo {
+  display: block;
+  /* position: absolute; */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* ANIMATION */
+
+@media (prefers-reduced-motion: no-preference) {
+  .spin {
+    animation: App-logo-spin infinite 20s linear;
+  }
+
+  .spin-reverse {
+    animation: App-logo-spin infinite 20s linear;
+    animation-direction: reverse;
+  }
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
