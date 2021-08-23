@@ -28,12 +28,7 @@ function App() {
       <div className="container">
         {content}
 
-        {/* use the style+display to show or hide the component */}
-        {/* this leaves the HTML in the browser  */}
-        {/* <div className="" style={{ display: !logoVisible ? "" : "none" }}>
-          <QuestionDisplay questionNumber={questionNumber} />
-  </div> */}
-
+        <div className="App-section">
         <button
           style={{
             width: "200px",
@@ -45,6 +40,7 @@ function App() {
         >
           CLICK TO BEGIN
         </button> 
+        </div>
 
       </div>
 
@@ -55,7 +51,6 @@ function App() {
 
       <h2>Quiz out Baby....</h2>
 
-      <div className="testDiv">{content}</div>
     </div>
 
     //<Footer />
