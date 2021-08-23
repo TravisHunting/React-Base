@@ -47,7 +47,7 @@ export function QuestionDisplay(props) {
         <div>{questions[props.questionNumber].questionText}</div>
 
         {questions[props.questionNumber].answerOptions.map((answer,idx) => (
-            <li id={"Q" + props.questionNumber.toString() + "A" + idx.toString()} 
+            <li id={"Q" + props.questionNumber.toString() + "A" + idx.toString()}
             key={"Q" + props.questionNumber.toString() + "A" + idx.toString()}>
                 {answer.answerText}</li>
         ))}
@@ -55,3 +55,5 @@ export function QuestionDisplay(props) {
       </div>
     );
   }
+
+export default QuestionDisplay;
