@@ -25,7 +25,11 @@ function App() {
 
     <div className="App-body">
       <h1>Big Time Quiz Time</h1>
+<<<<<<< Updated upstream
       <div className="container">
+=======
+      <div class="content-viewport">
+>>>>>>> Stashed changes
         {content}
 
         {/* use the style+display to show or hide the component */}
@@ -55,7 +59,11 @@ function App() {
 
       <h2>Quiz out Baby....</h2>
 
+<<<<<<< Updated upstream
       <div className="testDiv">{content}</div>
+=======
+      {/* <div class="testDiv">{content}</div> */}
+>>>>>>> Stashed changes
     </div>
 
     //<Footer />

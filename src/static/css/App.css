@@ -6,6 +6,13 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+<<<<<<< Updated upstream
+=======
+} */
+
+* {
+  box-sizing: border-box;
+>>>>>>> Stashed changes
 }
 
 /* MAIN */
@@ -20,14 +27,23 @@
   background: #283034;
 }
 
+.App-body .content-viewport {
+  border: purple 5px solid;
+  width: 80vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .App-link {
   color: #61dafb;
 }
 
 /* UTILITIES */
-.container {
-  max-width: 80%;
-}
+
 
 .fullcenter {
   position: absolute;
