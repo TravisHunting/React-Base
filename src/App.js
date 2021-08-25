@@ -25,10 +25,10 @@ function App() {
 
     <div className="App-body">
       <h1>Big Time Quiz Time</h1>
-      <div className="container">
-        {content}
 
-        <div className="App-section">
+      <div class="content-viewport">{content}</div>
+
+      <div className="App-section">
         <button
           style={{
             width: "200px",
@@ -39,18 +39,12 @@ function App() {
           onClick={() => setLogoVisible(!logoVisible)}
         >
           CLICK TO BEGIN
-        </button> 
-        </div>
-
+        </button>
       </div>
 
-      <div className="container">
-      {quizContent}
-        </div> 
-
+      <div className="container">{quizContent}</div>
 
       <h2>Quiz out Baby....</h2>
-
     </div>
 
     //<Footer />

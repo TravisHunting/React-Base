@@ -8,6 +8,10 @@
   color: white;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* MAIN */
 .App-body {
   min-height: 100vh;
@@ -20,11 +24,22 @@
   background: #283034;
 }
 
+.App-body .content-viewport {
+  border: purple 5px solid;
+  width: 80vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .App-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   padding: 1%;
 }
 
@@ -33,9 +48,6 @@
 }
 
 /* UTILITIES */
-.container {
-  max-width: 80%;
-}
 
 .fullcenter {
   position: absolute;
