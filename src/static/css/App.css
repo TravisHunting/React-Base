@@ -27,17 +27,27 @@
   background: #283034;
 }
 
+<<<<<<< HEAD
 .App-body .content-viewport {
   border: purple 5px solid;
   width: 80vw;
   height: 70vh;
+=======
+.App-section {
+>>>>>>> 4912d23014c0a5b3cdf93597c1c914956ecd4655
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
 }
 
 
+=======
+  padding: 1%;
+}
+
+>>>>>>> 4912d23014c0a5b3cdf93597c1c914956ecd4655
 .App-link {
   color: #61dafb;
 }

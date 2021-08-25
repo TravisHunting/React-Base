@@ -32,12 +32,7 @@ function App() {
 >>>>>>> Stashed changes
         {content}
 
-        {/* use the style+display to show or hide the component */}
-        {/* this leaves the HTML in the browser  */}
-        {/* <div className="" style={{ display: !logoVisible ? "" : "none" }}>
-          <QuestionDisplay questionNumber={questionNumber} />
-  </div> */}
-
+        <div className="App-section">
         <button
           style={{
             width: "200px",
@@ -49,6 +44,7 @@ function App() {
         >
           CLICK TO BEGIN
         </button> 
+        </div>
 
       </div>
 
@@ -59,11 +55,14 @@ function App() {
 
       <h2>Quiz out Baby....</h2>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       <div className="testDiv">{content}</div>
 =======
       {/* <div class="testDiv">{content}</div> */}
 >>>>>>> Stashed changes
+=======
+>>>>>>> 4912d23014c0a5b3cdf93597c1c914956ecd4655
     </div>
 
     //<Footer />
