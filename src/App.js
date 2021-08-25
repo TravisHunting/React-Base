@@ -25,14 +25,10 @@ function App() {
 
     <div className="App-body">
       <h1>Big Time Quiz Time</h1>
-<<<<<<< Updated upstream
-      <div className="container">
-=======
-      <div class="content-viewport">
->>>>>>> Stashed changes
-        {content}
 
-        <div className="App-section">
+      <div class="content-viewport">{content}</div>
+
+      <div className="App-section">
         <button
           style={{
             width: "200px",
@@ -43,26 +39,12 @@ function App() {
           onClick={() => setLogoVisible(!logoVisible)}
         >
           CLICK TO BEGIN
-        </button> 
-        </div>
-
+        </button>
       </div>
 
-      <div className="container">
-      {quizContent}
-        </div> 
-
+      <div className="container">{quizContent}</div>
 
       <h2>Quiz out Baby....</h2>
-
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <div className="testDiv">{content}</div>
-=======
-      {/* <div class="testDiv">{content}</div> */}
->>>>>>> Stashed changes
-=======
->>>>>>> 4912d23014c0a5b3cdf93597c1c914956ecd4655
     </div>
 
     //<Footer />

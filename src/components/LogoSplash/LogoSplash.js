@@ -6,12 +6,15 @@ import '../../static/css/App.css';
 
 export function LogoSplash() {
   return (
-    <div className="logo-container">
+    <div className="flex-container">
+      <div className="logo-container">
         <img src={logo01} className="logo logo-left spin" alt="logo" />
         <img src={logo02} className="logo logo-right spin-reverse" alt="logo" />
+      </div>
     </div>
   );
 }
+
 
 export function LogoSplash2(props) {
   if (props.visible) {
