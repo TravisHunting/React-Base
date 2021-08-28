@@ -74,7 +74,7 @@ export function QuestionDisplay(props) {
     return (
       <div>
         
-        {showQuestions ? <div>questions[currentQuestion].questionText</div> : "You Scored:" }
+        {showQuestions ? <div>{questions[currentQuestion].questionText}</div> : "You Scored:" }
         {showQuestions ? questionContent : <div className="App-section">{score}</div>}
 
       </div>
