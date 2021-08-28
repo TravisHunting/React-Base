@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../static/css/App.css';
 
 
 export const questions = [
@@ -40,28 +41,41 @@ export const questions = [
     },
 ];
 
-function CheckAnswer(id) {
-    let data = id.split(".");
-    let questionNumber = data[1];
-    let answerNumber = data[3];
-    console.log(questions[questionNumber].answerOptions[answerNumber].isCorrect);
-    return questions[questionNumber].answerOptions[answerNumber].isCorrect;
-}
-
 export function QuestionDisplay(props) {
+
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [score, setScore] = useState(0); 
+    const [showQuestions, setShowQuestions] = useState(true);
+
+    function CheckAnswer(question, answer) {
+        console.log("Question number: " + question);
+        console.log(questions[question].answerOptions[answer].isCorrect);
+
+        if (questions[question].answerOptions[answer].isCorrect) {
+            setScore(score + 1)
+        }
+
+        if (currentQuestion < questions.length -1) {
+            setCurrentQuestion(currentQuestion + 1);
+        } else {
+            setShowQuestions(false);
+        }
+    }
+
+    var questionContent = questions[currentQuestion].answerOptions.map((answer,idx) => (
+        <button 
+        id={"Q." + currentQuestion.toString() + ".A." + idx.toString()}
+        key={"Q." + currentQuestion.toString() + ".A." + idx.toString()} 
+        onClick={CheckAnswer.bind(this, currentQuestion, idx)}
+        >
+            {answer.answerText}</button>
+    ))
+
     return (
       <div>
-
-        <div>{questions[props.questionNumber].questionText}</div>
-
-        {questions[props.questionNumber].answerOptions.map((answer,idx) => (
-            <button 
-            id={"Q." + props.questionNumber.toString() + ".A." + idx.toString()}
-            key={"Q." + props.questionNumber.toString() + ".A." + idx.toString()} 
-            onClick={CheckAnswer.bind(this, "Q." + props.questionNumber.toString() + ".A." + idx.toString())}
-            >
-                {answer.answerText}</button>
-        ))}
+        
+        {showQuestions ? <div>questions[currentQuestion].questionText</div> : "You Scored:" }
+        {showQuestions ? questionContent : <div className="App-section">{score}</div>}
 
       </div>
     );

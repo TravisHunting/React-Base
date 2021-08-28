@@ -17,7 +17,8 @@ function App() {
     quizContent = "";
   } else {
     content = "";
-    quizContent = <QuestionDisplay questionNumber={questionNumber} />;
+    //quizContent = <QuestionDisplay questionNumber={questionNumber} />;
+    quizContent = <QuestionDisplay/>;
   }
 
   return (
@@ -26,7 +27,7 @@ function App() {
     <div className="App-body">
       <h1>Big Time Quiz Time</h1>
 
-      <div class="content-viewport">{content}</div>
+      <div className="content-viewport">{content}{quizContent}</div>
 
       <div className="App-section">
         <button
@@ -42,7 +43,7 @@ function App() {
         </button>
       </div>
 
-      <div className="container">{quizContent}</div>
+      {/* <div className="container">{quizContent}</div> */}
 
       <h2>Quiz out Baby....</h2>
     </div>
