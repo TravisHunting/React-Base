@@ -71,11 +71,14 @@ export function QuestionDisplay(props) {
             {answer.answerText}</button>
     ))
 
+    var questionText = <div>{questions[currentQuestion].questionText}</div>;
+    var scoreText = <div className="App-section">{score}</div>;
+
     return (
       <div>
         
-        {showQuestions ? <div>{questions[currentQuestion].questionText}</div> : "You Scored:" }
-        {showQuestions ? questionContent : <div className="App-section">{score}</div>}
+        { showQuestions ? questionText : "You Scored:" }
+        { showQuestions ? questionContent : scoreText }
 
       </div>
     );
