@@ -1,0 +1,79 @@
+* {
+  color: white;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.topnav {
+  /* border: 3p x solid blue; */
+  height: 15vh;
+  width: 100%;
+  background: black;
+  /* overflow: hidden; */
+}
+
+.flex-container {
+  /* border: 1px solid green; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  align-content: center;
+}
+
+.flex-row {
+  /* border: 3px solid purple; */
+  width: 100%;
+  /* border: 3px purple; */
+  /* align-self: center; */
+  display: flex;
+  justify-content: space-between;
+  /* align-content: space-between; */
+}
+
+.nav-section {
+  /* display: flex; */
+  /* flex-direction: column; */
+  align-self: center;
+  /* align-content: space-between; */
+}
+
+.homelogo {
+  /* font-size: 20px; */
+  display: flex;
+  /* border: 3px solid orange; */
+  height: 8vh;
+  margin: 0 0 0 3vw;
+}
+
+.navigation a {
+  text-decoration: none;
+  padding: 1vh 1vw;
+  margin: 1vh 1vw;
+}
+
+.navigation a:hover {
+  color: #1ed1b2;
+  border-bottom: 2px solid #1ed1b2;
+}
+
+.social {
+
+  /* border: 3px solid yellow; */
+  padding: 1vh 1vw;
+  margin: 0 3vw 0 0;
+}
+
+.social a {
+  text-decoration: none;
+}
+
+.social a:hover {
+  color: #1ed1b2;
+}
+
+/* section {
+  height: 300px;
+  width: 100%;
+  background: red;
+} */
