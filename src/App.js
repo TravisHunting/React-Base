@@ -2,7 +2,7 @@ import './static/css/App.css';
 import { LogoSplash , LogoSplash2 } from './components/LogoSplash/LogoSplash';
 import { QuestionDisplay } from './components/Questions';
 import React, { useState } from 'react';
-
+import Navbar from './components/Navbar/Navbar';
 function App() {
 
   const [logoVisible, setLogoVisible] = useState(true);
@@ -22,33 +22,36 @@ function App() {
   }
 
   return (
-    //<Navbar />
+    <div>
+      <Navbar />
+      <div className="App-body">
+        <h1>Big Time Quiz Time</h1>
 
-    <div className="App-body">
-      <h1>Big Time Quiz Time</h1>
+        <div className="content-viewport">
+          {content}
+          {quizContent}
+        </div>
 
-      <div className="content-viewport">{content}{quizContent}</div>
+        <div className="App-section">
+          <button
+            style={{
+              width: "200px",
+              height: "100px",
+              zIndex: "3",
+              display: logoVisible ? "" : "none",
+            }}
+            onClick={() => setLogoVisible(!logoVisible)}
+          >
+            CLICK TO BEGIN
+          </button>
+        </div>
 
-      <div className="App-section">
-        <button
-          style={{
-            width: "200px",
-            height: "100px",
-            zIndex: "3",
-            display: logoVisible ? "" : "none",
-          }}
-          onClick={() => setLogoVisible(!logoVisible)}
-        >
-          CLICK TO BEGIN
-        </button>
+        {/* <div className="container">{quizContent}</div> */}
+
+        <h2>Quiz out Baby....</h2>
       </div>
-
-      {/* <div className="container">{quizContent}</div> */}
-
-      <h2>Quiz out Baby....</h2>
+     {/* <Footer /> */}
     </div>
-
-    //<Footer />
   );
 }
 
