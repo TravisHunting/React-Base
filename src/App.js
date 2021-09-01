@@ -1,5 +1,6 @@
 import './static/css/App.css';
-import { LogoSplash , LogoSplash2 } from './components/LogoSplash/LogoSplash';
+import { LogoSplash } from './components/LogoSplashes/LogoSplash';
+import { LogoSplash2 } from "./components/LogoSplashes/LogoSplash2";
 import { QuestionDisplay } from './components/Questions';
 import React, { useState } from 'react';
 
@@ -27,7 +28,10 @@ function App() {
     <div className="App-body">
       <h1>Big Time Quiz Time</h1>
 
-      <div className="content-viewport">{content}{quizContent}</div>
+      <div className="content-viewport">
+        {content}
+        {quizContent}
+      </div>
 
       <div className="App-section">
         <button
