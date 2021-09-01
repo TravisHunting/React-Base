@@ -1,5 +1,6 @@
 import './static/css/App.css';
-import { LogoSplash , LogoSplash2 } from './components/LogoSplash/LogoSplash';
+import { LogoSplash } from './components/LogoSplashes/LogoSplash';
+import { LogoSplash2 } from "./components/LogoSplashes/LogoSplash2";
 import { QuestionDisplay } from './components/Questions';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
