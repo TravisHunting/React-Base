@@ -1,8 +1,8 @@
 import React from "react";
-import { LogoSplash } from "../LogoSplash/LogoSplash";
+import { LogoSplash } from "../LogoSplashes/LogoSplash.js";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({setNavbarChoice}) {
   return (
     <div className="flex-container topnav">
       <nav className="flex-row">
@@ -10,9 +10,10 @@ function Navbar() {
           <LogoSplash />
         </div>
         <div className="nav-section navigation">
-          <a href="#">Quizzes</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+          <a href="#" onClick={setNavbarChoice.bind(this,"home")}>Home</a>
+          <a href="#" onClick={setNavbarChoice.bind(this,"quizzes")}>Quizzes</a>
+          <a href="#" onClick={setNavbarChoice.bind(this,"about")}>About</a>
+          <a href="#" onClick={setNavbarChoice.bind(this,"contact")}>Contact</a>
         </div>
         <div className="nav-section social">
           <a href="#">GitHub</a>
