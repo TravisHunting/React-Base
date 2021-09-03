@@ -23,6 +23,9 @@ function App() {
     case "contact":
       content = <LogoSplash />; //placeholder
       break;
+    default:
+      content = <LogoSplash />;
+      break;
   }
 
   return (

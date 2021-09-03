@@ -16,7 +16,7 @@ function Navbar({setNavbarChoice}) {
           <a href="#" onClick={setNavbarChoice.bind(this,"contact")}>Contact</a>
         </div>
         <div className="nav-section social">
-          <a href="#">GitHub</a>
+          <a href="https://github.com/TravisHunting/0-react-quiz">GitHub</a>
         </div>
       </nav>
     </div>
