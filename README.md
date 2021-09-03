@@ -5,11 +5,6 @@ https://guilfordjournals.com/doi/abs/10.1521/pedi.1992.6.4.343 <br>
 https://pubmed.ncbi.nlm.nih.gov/17983306/ <br>
 https://courses.jordanbpeterson.com/personality <br>
 
-## **Hot Reloading**
-
-I recommend using nodemon for hot reloading during development
- - "nodemon App.js"
-
 ## **Debugging**
 
 ### [VS Code Instructions](https://create-react-app.dev/docs/setting-up-your-editor/#debugging-in-the-editor)
