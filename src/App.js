@@ -1,9 +1,10 @@
 import './static/css/App.css';
-import { LogoSplash } from './components/LogoSplashes/LogoSplash';
-import { QuestionDisplay } from './components/Questions';
+import { LogoSplash } from './components/LogoSplashes/LogoSplash.js';
+import { QuestionDisplay } from './components/Questions.js';
 import { Colorbar } from './components/Colorbar.js';
 import React, { useState } from 'react';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar.js';
+import { APOD } from './components/APOD.js';
 function App() {
 
   const [navbarChoice, setNavbarChoice] = useState("home");
@@ -25,6 +26,9 @@ function App() {
       break;
     case "color":
       content = <Colorbar />
+      break;
+    case "apod":
+      content = <APOD />
       break;  
     default:
       content = <LogoSplash />;
@@ -35,13 +39,11 @@ function App() {
     <div>
       <Navbar setNavbarChoice={setNavbarChoice}/>
       <div className="App-body">
-        <h1>Big Time Quiz Time</h1>
 
         <div className="content-viewport">
           {content}
         </div>
 
-        <h2>Quiz out Baby....</h2>
       </div>
      {/* <Footer /> */}
     </div>

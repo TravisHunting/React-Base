@@ -57,7 +57,7 @@ export class Colorbar extends React.Component {
             function(response) {
                 if (!response.ok) {
                 // Catches HTML error responses
-                console.log("Response not 'OK'");
+                console.log("Response not 'OK' for Colorbar");
                 } else {
                     console.log("returning response.json()");
                     return response.json();
