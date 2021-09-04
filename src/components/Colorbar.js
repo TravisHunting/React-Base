@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import loading from "../static/images/loading.gif";
-
+import "../static/css/App.css";
 export class Colorbar extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             content: <img src={loading} style={{width:"50px", height:"50px"}}/>, 
-            colorData: []
+            colorData: [],
         };
 
         this.displayColors = this.displayColors.bind(this);
+        this.showColorPalette = this.showColorPalette.bind(this);
       } 
+    
+    showColorPalette(arrColor) {
+
+        var colorDivs = arrColor.map(e => (
+            <div className="grid-child" style={{backgroundColor:("rgb(" + e[0] + "," + e[1] + "," + e[2] + ")"), height:"10vh"}}> </div>
+        )) 
+
+        var display = (
+            <div className="grid-container">
+            {colorDivs}
+            </div>
+        )
+
+        this.setState({content: display});
+    }
+
 
     displayColors() {
         // http://colormind.io/api-access/
@@ -32,16 +49,15 @@ export class Colorbar extends React.Component {
             function(response) {
                 if (!response.ok) {
                 // Catches HTML error responses
-                console.log("Response not ok, returning to Logo screen");
+                console.log("Response not 'OK'");
                 } else {
                     console.log("returning response.json()");
                     return response.json();
                 }
 
         }).then(function(responseJson) {
-            // TODO: set state for content to some HTML that will render the colors in the array
-            // Right now we just get to view the unformatted array of RGB values
-            self.setState({content: responseJson.result});
+            // On successful response, transform the RGB values into JSX elements and display on screen
+            self.showColorPalette(responseJson.result);
         }).catch(function(err) {
             // Catches network and code errors (no connection etc)
             console.log(err);
@@ -55,7 +71,17 @@ export class Colorbar extends React.Component {
 
     render() {
         return (
-            <div>{this.state.content}</div>
+            <div>
+                
+                <div>
+                    {this.state.content}
+                </div>
+                
+                <div className="center" style={{textAlign:"center"}}>
+                    <button onClick={this.displayColors.bind(this)} style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>Refresh Colors</button>
+                </div>
+
+            </div>
         );
     }
 }

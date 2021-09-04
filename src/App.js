@@ -49,5 +49,3 @@ function App() {
 }
 
 export default App;
-
-// Todo: Make an API call, make some class components
