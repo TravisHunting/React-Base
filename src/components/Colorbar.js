@@ -7,7 +7,8 @@ export class Colorbar extends React.Component {
         super(props);
         this.state = {
             content: <img src={loading} style={{width:"50px", height:"50px"}}/>, 
-            colorData: [],
+            loadingImg: <img src={loading} style={{width:"50px", height:"50px"}}/>,
+            colorData: []
         };
 
         this.displayColors = this.displayColors.bind(this);
@@ -35,6 +36,13 @@ export class Colorbar extends React.Component {
         // https://kigiri.github.io/fetch/ used to translate curl command to fetch
         // return format [[44,43,44],[90,83,82],....]
         
+        // put up the loading icon while we wait for the request to come back
+        this.setState({content:
+        <div style={{display:"flex", justifyContent:"center", padding:"10px"}}>
+        <img src={loading} style={{width:"50px", height:"50px"}}/>
+        </div>
+        });
+
         // Necessary - otherwise 'this' loses track of context
         const self = this;
 
@@ -77,7 +85,7 @@ export class Colorbar extends React.Component {
                     {this.state.content}
                 </div>
                 
-                <div className="center" style={{textAlign:"center"}}>
+                <div style={{textAlign:"center"}}>
                     <button onClick={this.displayColors.bind(this)} style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>Refresh Colors</button>
                 </div>
 
