@@ -14,6 +14,7 @@ function Navbar({setNavbarChoice}) {
           <a href="#" onClick={setNavbarChoice.bind(this,"quizzes")}>Quizzes</a>
           <a href="#" onClick={setNavbarChoice.bind(this,"about")}>About</a>
           <a href="#" onClick={setNavbarChoice.bind(this,"contact")}>Contact</a>
+          <a href="#" onClick={setNavbarChoice.bind(this,"color")}>Generate Colors</a>
         </div>
         <div className="nav-section social">
           <a href="https://github.com/TravisHunting/0-react-quiz">GitHub</a>

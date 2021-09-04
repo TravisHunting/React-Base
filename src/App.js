@@ -1,7 +1,7 @@
 import './static/css/App.css';
 import { LogoSplash } from './components/LogoSplashes/LogoSplash';
-import { LogoSplash2 } from "./components/LogoSplashes/LogoSplash2";
 import { QuestionDisplay } from './components/Questions';
+import { Colorbar } from './components/Colorbar.js';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 function App() {
@@ -23,6 +23,9 @@ function App() {
     case "contact":
       content = <LogoSplash />; //placeholder
       break;
+    case "color":
+      content = <Colorbar />
+      break;  
     default:
       content = <LogoSplash />;
       break;
@@ -46,3 +49,5 @@ function App() {
 }
 
 export default App;
+
+// Todo: Make an API call, make some class components
