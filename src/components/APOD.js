@@ -18,7 +18,6 @@ export class APOD extends React.Component {
         this.getAPOD = this.getAPOD.bind(this);
     }
 
-    // Don't need to set this as a state variable because it will never need updating
     baseURL = "https://api.nasa.gov/planetary/apod"
 
     getAPOD() {
