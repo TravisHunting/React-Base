@@ -62,7 +62,7 @@ export class APOD extends React.Component {
                 {/* <div style={{fontSize:"10px"}}>
                     {this.state.explanation}
                 </div> */}
-                <div className="center" style={{textAlign:"center"}}>
+                <div style={{textAlign:"center"}}>
                     {this.state.copyright}
                 </div>
             </div>

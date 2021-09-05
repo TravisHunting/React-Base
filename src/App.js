@@ -5,6 +5,7 @@ import { Colorbar } from './components/Colorbar.js';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar.js';
 import { APOD } from './components/APOD.js';
+import { ChessPuzzle } from './components/ChessPuzzle';
 function App() {
 
   const [navbarChoice, setNavbarChoice] = useState("home");
@@ -29,6 +30,9 @@ function App() {
       break;
     case "apod":
       content = <APOD />
+      break;
+    case "chess":
+      content = <ChessPuzzle />
       break;  
     default:
       content = <LogoSplash />;
