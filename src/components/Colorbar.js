@@ -35,6 +35,9 @@ export class Colorbar extends React.Component {
         // http://colormind.io/api-access/
         // https://kigiri.github.io/fetch/ used to translate curl command to fetch
         // return format [[44,43,44],[90,83,82],....]
+        // 1 outer array
+        // 5 inner arrays
+        // inner arrays contain 3 integers within range 0-255 inclusive
         
         // put up the loading icon while we wait for the request to come back
         this.setState({content:
@@ -86,7 +89,11 @@ export class Colorbar extends React.Component {
                 </div>
                 
                 <div style={{textAlign:"center"}}>
-                    <button onClick={this.displayColors.bind(this)} style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>Refresh Colors</button>
+                    <button 
+                        onClick={this.displayColors.bind(this)} 
+                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
+                        Refresh Colors
+                    </button>
                 </div>
 
             </div>

@@ -39,8 +39,14 @@ export class APOD extends React.Component {
                 }
             }
         ).then(function(responseJson) {
-            console.log(responseJson.url);
-            self.setState({pageContent: <img src={responseJson.url} alt={responseJson.explanation} title={responseJson.explanation} style={{maxHeight:"50vh"}}></img>});
+            self.setState({pageContent: 
+            <img 
+                src={responseJson.url} 
+                alt={responseJson.explanation} 
+                title={responseJson.explanation} 
+                style={{maxHeight:"50vh"}}>
+            </img>});
+
             self.setState({copyright: responseJson.copyright}); 
         }
         ).catch(function(err) {
@@ -56,12 +62,15 @@ export class APOD extends React.Component {
     render() {
         return (
             <div>
+                
                 <div>
                     {this.state.pageContent}
                 </div>
+
                 <div style={{textAlign:"center"}}>
                     {this.state.copyright}
                 </div>
+
             </div>
         )
     }
