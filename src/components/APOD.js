@@ -5,6 +5,7 @@ import "../static/css/App.css";
 export class APOD extends React.Component {
     // Reference: https://api.nasa.gov/
     // Note: Normally you would keep your API key hidden and read it from an environment variable or something
+    // This API key allows 1000 requests per hour
 
     constructor(props) {
         super(props);
@@ -24,7 +25,9 @@ export class APOD extends React.Component {
         var self = this;
         var method = "GET";
         var url = this.baseURL + "?api_key=" + this.state.api_key;
-        // TODO: if (param_provided) {extend url}
+        // TODO: add buttons/checkboxes/input for parameters
+        // list of parameters available at https://api.nasa.gov/
+        // if (param_provided) {extend url}
         
         fetch(url, {method: method}).then(
             function(response) {
@@ -33,13 +36,11 @@ export class APOD extends React.Component {
                     console.log("Response not 'OK' for APOD");
                 } else {
                     console.log("returning response.json()");
-                    //console.log(response.json());
                     return response.json();
                 }
             }
         ).then(function(responseJson) {
             console.log(responseJson.url);
-            //self.setState({explanation: responseJson.explanation}); 
             self.setState({pageContent: <img src={responseJson.url} alt={responseJson.explanation} title={responseJson.explanation} style={{maxHeight:"50vh"}}></img>});
             self.setState({copyright: responseJson.copyright}); 
         }
@@ -59,9 +60,6 @@ export class APOD extends React.Component {
                 <div>
                     {this.state.pageContent}
                 </div>
-                {/* <div style={{fontSize:"10px"}}>
-                    {this.state.explanation}
-                </div> */}
                 <div style={{textAlign:"center"}}>
                     {this.state.copyright}
                 </div>
