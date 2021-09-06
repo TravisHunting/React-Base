@@ -1,8 +1,12 @@
 import React from "react";
+
 import { LogoSplash } from "../LogoSplashes/LogoSplash.js";
+import { Link } from "react-router-dom";
+
 import "./Navbar.css";
 
-function Navbar({setNavbarChoice}) {
+
+function Navbar() {
   return (
     <div className="flex-container topnav">
       <nav className="flex-row">
@@ -10,15 +14,13 @@ function Navbar({setNavbarChoice}) {
           <LogoSplash />
         </div>
         <div className="nav-section navigation">
-          <a href="#" onClick={setNavbarChoice.bind(this,"home")}>Home</a>
-          <a href="#" onClick={setNavbarChoice.bind(this,"quizzes")}>Quizzes</a>
-          {/*
-          <a href="#" onClick={setNavbarChoice.bind(this,"about")}>About</a>
-          <a href="#" onClick={setNavbarChoice.bind(this,"contact")}>Contact</a> 
-          */}
-          <a href="#" onClick={setNavbarChoice.bind(this,"color")}>Generate Colors</a>
-          <a href="#" onClick={setNavbarChoice.bind(this,"apod")}>APOD</a>
-          <a href="#" onClick={setNavbarChoice.bind(this,"chess")}>Chess</a>
+
+          <Link to="/">Home</Link>
+          <Link to="/quizzes">Quizzes</Link>
+          <Link to="/color">Generate Colors</Link>
+          <Link to="/apod">APOD</Link>
+          <Link to="/chess">Chess</Link>
+
         </div>
         <div className="nav-section social">
           <a href="https://github.com/TravisHunting/0-react-quiz">GitHub</a>

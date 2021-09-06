@@ -33,6 +33,9 @@ https://courses.jordanbpeterson.com/personality <br>
 *Additionally, you can use the "debugger" keyword which will cause your browser to pause and begin debuggin upon evaluation. Note: in JSX portions you use "{debugger}".*
 <br>
 
+## **React Router Dom**
+Note: You need to declare your "<Router>" component at a higher level than your switch / route / link components. Just put the initial Router tags around your App component in index.js.
+
 ## **Boilerplate:**
 
 This project was bootstrapped with create-react-app

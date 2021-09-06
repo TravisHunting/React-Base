@@ -1,51 +1,47 @@
-import './static/css/App.css';
+import React from 'react';
+
 import { LogoSplash } from './components/LogoSplashes/LogoSplash.js';
 import { QuestionDisplay } from './components/Questions.js';
 import { Colorbar } from './components/Colorbar.js';
-import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar.js';
 import { APOD } from './components/APOD.js';
 import { ChessPuzzle } from './components/ChessPuzzle';
+import { Switch, Route } from "react-router-dom";
+
+import './static/css/App.css';
+
+
 function App() {
-
-  const [navbarChoice, setNavbarChoice] = useState("home");
-
-  let content;
-
-  switch (navbarChoice) {
-    case "home":
-      content = <LogoSplash/>;
-      break;
-    case "quizzes":
-      content = <QuestionDisplay />;
-      break;
-    case "about":
-      content = <LogoSplash />; //placeholder
-      break;
-    case "contact":
-      content = <LogoSplash />; //placeholder
-      break;
-    case "color":
-      content = <Colorbar />
-      break;
-    case "apod":
-      content = <APOD />
-      break;
-    case "chess":
-      content = <ChessPuzzle />
-      break;  
-    default:
-      content = <LogoSplash />;
-      break;
-  }
 
   return (
     <div>
-      <Navbar setNavbarChoice={setNavbarChoice}/>
+      <Navbar />
       <div className="App-body">
 
         <div className="content-viewport">
-          {content}
+
+          <Switch>
+              <Route exact path="/">
+                  <LogoSplash />
+              </Route>
+
+              <Route path="/quizzes">
+                  <QuestionDisplay />
+              </Route>
+
+              <Route path="/color">
+                  <Colorbar />
+              </Route>
+
+              <Route path="/apod">
+                  <APOD />
+              </Route>
+
+              <Route path="/chess">
+                  <ChessPuzzle />
+              </Route>
+          </Switch>
+
         </div>
 
       </div>
