@@ -34,7 +34,7 @@ https://courses.jordanbpeterson.com/personality <br>
 <br>
 
 ## **React Router Dom**
-Note: You need to declare your "<Router>" component at a higher level than your switch / route / link components. Just put the initial Router tags around your App component in index.js.
+Note: You need to declare your "Router" component at a higher level than your switch / route / link components. Just put the initial Router tags around your App component in index.js.
 
 ## **Boilerplate:**
 
