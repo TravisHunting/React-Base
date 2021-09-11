@@ -15,11 +15,6 @@ export class ColorbarAuto extends React.Component {
             postTimer: "",
             colorData: []
         };
-
-        // These lines don't seem to be necessary... Why?
-        //this.displayColors = this.displayColors.bind(this);
-        //this.showColorPalette = this.showColorPalette.bind(this);
-        //this.postColorData = this.postColorData.bind(this);
       } 
     
     showColorPalette(arrColor) {
@@ -42,8 +37,7 @@ export class ColorbarAuto extends React.Component {
         // http://colormind.io/api-access/
         // https://kigiri.github.io/fetch/ used to translate curl command to fetch
         // return format [[44,43,44],[90,83,82],....]
-        // 1 outer array
-        // 5 inner arrays
+        // 1 outer array, 5 inner arrays
         // inner arrays contain 3 integers within range 0-255 inclusive
         
         // put up the loading icon while we wait for the request to come back
@@ -60,7 +54,6 @@ export class ColorbarAuto extends React.Component {
         var body = { model : "default" };
         var requestOptions = {
             body: JSON.stringify(body),
-            //body: body,
             method: "POST"
         }
 
@@ -70,7 +63,6 @@ export class ColorbarAuto extends React.Component {
                 // Catches HTML error responses
                 console.log("Response not 'OK' for Colorbar");
                 } else {
-                    //console.log("returning response.json()");
                     return response.json();
                 }
 
@@ -89,10 +81,9 @@ export class ColorbarAuto extends React.Component {
         this.postColorData();
         this.displayColors();
         let self = this;
-        this.setState({ postTimer: setInterval(() => self.postColorData(), 4000) });
-        this.setState({ retreiveTimer: setInterval(() => self.displayColors(), 4000) });
+        this.setState({ postTimer: setInterval(() => self.postColorData(), 3000) });
+        this.setState({ retreiveTimer: setInterval(() => self.displayColors(), 3000) });
     }
-
 
     stopAutoPosting() {
         clearInterval(this.state.retreiveTimer);
@@ -120,13 +111,17 @@ export class ColorbarAuto extends React.Component {
         // set loading icon while we wait
         this.setState({posted: this.state.loadingImg})
 
-        // let _id = "";
-        // colorData.forEach(panel => panel.forEach(value => _id += value));
-        // console.log("Generated ID from colorData:");
-        // console.log(_id);
+        let _id = "";
+        colorData.forEach(panel => panel.forEach(function(value) {
+            _id = _id + value + ".";
+        }));
+        _id = _id.substring(0, _id.length - 1);
+
+        console.log("Generated ID from colorData:");
+        console.log(_id);
 
         let palette = {
-            //_id: _id,
+            _id: _id,
             raw: colorData,
             panel1: {
                 red: colorData[0][0],
@@ -163,29 +158,23 @@ export class ColorbarAuto extends React.Component {
             method: "POST"
         }
 
-        console.log("requestOptions.body: ");
-        console.log(requestOptions.body);
-
         self.setState({tries: self.state.tries + 1})
 
         fetch(url, requestOptions).then(
             function(response) {
                 if (!response.ok) {
                 // Catches HTML error responses
-                console.log("response 1: ", response);
                 console.log("Response not 'OK' for Colorbar Post");
+                console.log("response: ", response);
                 } else {
-                    console.log("returning response");
-                    console.log("response 1: ", response);
-                    //console.log(response);
                     return response.json();
                 }
 
         }).then(function(responseJson) {
             // On successful response, transform the RGB values into JSX elements and display on screen
-            console.log("Response JSON: ");
+            console.log("Response JSON : ");
             console.log(responseJson);
-            console.log(responseJson.success);
+            //console.log(responseJson.success);
             if (responseJson.success) {
                 self.setState({successes: self.state.successes + 1})
             }
