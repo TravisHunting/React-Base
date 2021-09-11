@@ -209,7 +209,8 @@ export class ColorbarAuto extends React.Component {
                 <div style={{textAlign:"center", padding:"10px"}}>
                     <button 
                         onClick={this.postColorData.bind(this)} 
-                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
+                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}
+                        title="You must have a server listening at http://localhost:5000/colorpost">
                         Post Color Data
                     </button>
                 </div>
@@ -217,7 +218,8 @@ export class ColorbarAuto extends React.Component {
                 <div style={{textAlign:"center", padding:"10px"}}>
                     <button 
                         onClick={this.postColorDataAuto.bind(this)} 
-                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
+                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}
+                        title="You must have a server listening at http://localhost:5000/colorpost">
                         Post Color Data Auto
                     </button>
                 </div>
