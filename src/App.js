@@ -3,6 +3,7 @@ import React from 'react';
 import { LogoSplash } from './components/LogoSplashes/LogoSplash.js';
 import { QuestionDisplay } from './components/Questions.js';
 import { Colorbar } from './components/Colorbar.js';
+import { ColorbarAuto } from './components/ColorbarAuto.js';
 import Navbar from './components/Navbar/Navbar.js';
 import { APOD } from './components/APOD.js';
 import { ChessPuzzle } from './components/ChessPuzzle';
@@ -30,7 +31,7 @@ function App() {
               </Route>
 
               <Route path="/color">
-                  <Colorbar />
+                  <ColorbarAuto />
               </Route>
 
               <Route path="/apod">
