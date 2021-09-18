@@ -1,5 +1,7 @@
 import React from 'react';
 import loading from "../static/images/loading.gif";
+import { Canvas } from "./Canvas.js"
+
 import "../static/css/App.css";
 export class ColorbarAuto extends React.Component {
 
@@ -8,6 +10,7 @@ export class ColorbarAuto extends React.Component {
         this.state = {
             content: <img src={loading} style={{width:"50px", height:"50px"}}/>, 
             loadingImg: <img src={loading} style={{width:"50px", height:"50px"}}/>,
+            canvas: <Canvas/>,
             posted: "",
             tries: 0,
             successes: 0,
@@ -190,12 +193,31 @@ export class ColorbarAuto extends React.Component {
         this.displayColors();
     }
 
+    imageRecolor() {
+        console.log("colordata from colorbar: ",this.state.colorData)
+        this.setState({canvas: <Canvas colorData={this.state.colorData}/>}) 
+        //this.setState({canvas: <Canvas props={colorData: {this.state.colorData}}/>}) 
+        //this.setState({canvas: ""}) 
+    }
+
     render() {
         return (
             <div>
                 
                 <div style={{textAlign:"center", padding:"10px"}}>
                     {this.state.content}
+                </div>
+
+                <div style={{textAlign:"center", padding:"10px"}}>
+                    {this.state.canvas}
+                </div>
+
+                <div style={{textAlign:"center", padding:"10px"}}>
+                    <button 
+                        onClick={this.imageRecolor.bind(this)} 
+                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
+                        Recolor Image
+                    </button>
                 </div>
                 
                 <div style={{textAlign:"center", padding:"10px"}}>
