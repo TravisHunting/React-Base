@@ -3,12 +3,17 @@ import loading from "../static/images/loading.gif";
 import { Canvas } from "./Canvas.js"
 
 import "../static/css/App.css";
+
+// TODO:
+// Figure out how to get rid of the "Each child in a list should have a unique key prop" warning
 export class ColorbarAuto extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            content: <img src={loading} style={{width:"50px", height:"50px"}}/>, 
+            content: "", 
+            rows: [],
+            rowLoading: "", 
             loadingImg: <img src={loading} style={{width:"50px", height:"50px"}}/>,
             canvas: <Canvas/>,
             posted: "",
@@ -18,40 +23,128 @@ export class ColorbarAuto extends React.Component {
             postTimer: "",
             colorData: []
         };
+
+        this.info = <div style={{textAlign:"center", padding:"10px", fontSize:"small"}}>
+        Press "Add A Random Color Row" to load a random color swatch <br/> <br/>
+        Press "Add A Color Row Via API" to load a color palette from an external API <br/> <br/>
+        Click individual color panels to randomize them <br/> <br/>
+        Press "Choose file" to upload an image <br/> <br/>
+        Click your image to reset its colors back to the original <br/> <br/>
+        Press "Recolor Image" to scan through your image and <br/> replace all of its colors with those available in your color swatches
+        </div>
+
       } 
     
-    showColorPalette(arrColor) {
-        // TODO: Add unique "key" prop to each child in the list
-        var colorDivs = arrColor.map(e => (
-            <div className="grid-child" style={{backgroundColor:("rgb(" + e[0] + "," + e[1] + "," + e[2] + ")"), height:"10vh"}}> </div>
+    
+
+    async addRow()  {
+        let self = this;
+
+        this.setState({
+            content: ""
+        })
+         
+        let loadingImg = <div style={{display:"flex", justifyContent:"center", padding:"10px"}}>
+        <img src={loading} style={{width:"50px", height:"50px"}}/>
+        </div>
+
+        this.setState({ rowLoading: loadingImg })
+
+        let rowData = await this.fetchColorData();
+
+        if (rowData) {
+        let colorDivs = rowData.map((e,idx) => (
+            <div id={"colorPanel" + ( this.state.colorData.length + idx)} 
+            className="grid-child" 
+            style={{backgroundColor:("rgb(" + e[0] + "," + e[1] + "," + e[2] + ")"), height:"10vh"}} 
+            //key={e, idx}
+            onClick={self.randomizePanel.bind(this, "colorPanel" + ( this.state.colorData.length + idx), this.state.colorData.length + idx)}> </div>
         )) 
 
-        var display = (
+        rowData.forEach(function(e) {
+            self.setState({
+                colorData: [...self.state.colorData, e]
+            })
+        })
+
+        let display = (
             <div className="grid-container">
             {colorDivs}
             </div>
         )
+        
+        this.setState({ rowLoading: "" })
 
-        this.setState({content: display});
+        this.setState({ rows: [...this.state.rows, display] })
+        } else {
+            this.setState({ rowLoading: "Load Failed, Try Again" })
+        }
     }
 
+    addRandomRow() {
+        let self = this;
+        this.setState({
+            content: ""
+        })
+        let rowData = []
+        for (let i = 0; i < 5; i++) {
+            rowData.push(
+                [
+                    Math.floor(Math.random() * 255),
+                    Math.floor(Math.random() * 255),
+                    Math.floor(Math.random() * 255)
+                ]
+            )
+        }
 
-    displayColors() {
-        // http://colormind.io/api-access/
-        // https://kigiri.github.io/fetch/ used to translate curl command to fetch
-        // return format [[44,43,44],[90,83,82],....]
-        // 1 outer array, 5 inner arrays
-        // inner arrays contain 3 integers within range 0-255 inclusive
+        let colorDivs = rowData.map((e,idx) => (
+            <div id={"colorPanel" + ( this.state.colorData.length + idx)} 
+            className="grid-child" 
+            style={{backgroundColor:("rgb(" + e[0] + "," + e[1] + "," + e[2] + ")"), 
+            height:"10vh"}} 
+            //key={"colorPanel" + ( this.state.colorData.length + idx)}
+            onClick={self.randomizePanel.bind(this, "colorPanel" + ( this.state.colorData.length + idx), this.state.colorData.length + idx)}> 
+            </div>
+        )) 
         
-        // put up the loading icon while we wait for the request to come back
-        this.setState({content:
-        <div style={{display:"flex", justifyContent:"center", padding:"10px"}}>
-        <img src={loading} style={{width:"50px", height:"50px"}}/>
-        </div>
-        });
+        let temp = [...this.state.colorData]
 
-        // Necessary - otherwise 'this' loses track of context
-        const self = this;
+
+        rowData.forEach(function(e) {
+            temp.push(e)
+        })
+
+        self.setState({
+            colorData: temp
+        })
+
+        let display = (
+            <div className="grid-container">
+            {colorDivs}
+            </div>
+        )
+        
+        this.setState({ rows: [...this.state.rows, display] })
+    }
+
+    randomizePanel(panelId, idx) {
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        document.getElementById(panelId).style.backgroundColor = "rgb(" + red + "," + green + "," + blue + ")"
+        document.getElementById(panelId).style.height = "10vh"
+
+        let temp = [...this.state.colorData]
+        temp[idx] = [red, green, blue];
+
+        this.setState({
+            colorData: temp
+        })
+    }
+
+    async fetchColorData() {
+        let self = this;
+        let output = false;
 
         var url = "http://colormind.io/api/";
         var body = { model : "default" };
@@ -60,24 +153,32 @@ export class ColorbarAuto extends React.Component {
             method: "POST"
         }
 
-        fetch(url, requestOptions).then(
+        await fetch(url, requestOptions).then(
             function(response) {
                 if (!response.ok) {
                 // Catches HTML error responses
-                console.log("Response not 'OK' for Colorbar");
+                console.log("Response not 'OK' for color fetching");
                 } else {
                     return response.json();
                 }
 
         }).then(function(responseJson) {
             // On successful response, transform the RGB values into JSX elements and display on screen
-            self.setState({colorData : responseJson.result})
-            self.showColorPalette(responseJson.result);
+            output = responseJson.result;
         }).catch(function(err) {
             // Catches network and code errors (no connection etc)
             console.log(err);
         });
 
+        return output;
+    }
+
+    reset() {
+        this.setState({
+            rows: [],
+            colorData: [],
+            content: this.info
+        })
     }
 
     postColorDataAuto() {
@@ -190,14 +291,14 @@ export class ColorbarAuto extends React.Component {
     }
 
     componentDidMount() {
-        this.displayColors();
+        this.setState({
+            content: this.info
+        })
     }
 
     imageRecolor() {
-        console.log("colordata from colorbar: ",this.state.colorData)
+        console.log("image recolor firing:", this.state.colorData);
         this.setState({canvas: <Canvas colorData={this.state.colorData}/>}) 
-        //this.setState({canvas: <Canvas props={colorData: {this.state.colorData}}/>}) 
-        //this.setState({canvas: ""}) 
     }
 
     render() {
@@ -206,10 +307,28 @@ export class ColorbarAuto extends React.Component {
                 
                 <div style={{textAlign:"center", padding:"10px"}}>
                     {this.state.content}
+                    {this.state.rows}
+                    {this.state.rowLoading}
                 </div>
 
                 <div style={{textAlign:"center", padding:"10px"}}>
                     {this.state.canvas}
+                </div>
+
+                <div style={{textAlign:"center", padding:"10px"}}>
+                    <button 
+                        onClick={this.addRandomRow.bind(this)} 
+                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
+                        Add A Random Color Row
+                    </button>
+                </div>
+
+                <div style={{textAlign:"center", padding:"10px"}}>
+                    <button 
+                        onClick={this.addRow.bind(this)} 
+                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
+                        Add A Color Row Via API
+                    </button>
                 </div>
 
                 <div style={{textAlign:"center", padding:"10px"}}>
@@ -219,25 +338,33 @@ export class ColorbarAuto extends React.Component {
                         Recolor Image
                     </button>
                 </div>
-                
+
                 <div style={{textAlign:"center", padding:"10px"}}>
+                    <button 
+                        onClick={this.reset.bind(this)} 
+                        style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
+                        Reset Color Rows
+                    </button>
+                </div>
+                
+                {/* <div style={{textAlign:"center", padding:"10px"}}>
                     <button 
                         onClick={this.displayColors.bind(this)} 
                         style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}>
                         Refresh Colors
                     </button>
-                </div>
+                </div> */}
 
-                <div style={{textAlign:"center", padding:"10px"}}>
+                {/* <div style={{textAlign:"center", padding:"10px"}}>
                     <button 
                         onClick={this.postColorData.bind(this)} 
                         style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}
                         title="You must have a server listening at http://localhost:5000/colorpost">
                         Post Color Data
                     </button>
-                </div>
+                </div> */}
 
-                <div style={{textAlign:"center", padding:"10px"}}>
+                {/* <div style={{textAlign:"center", padding:"10px"}}>
                     <button 
                         onClick={this.postColorDataAuto.bind(this)} 
                         style={{color:"black", fontWeight:"bold", fontSize:"large", padding:"10px"}}
@@ -264,7 +391,7 @@ export class ColorbarAuto extends React.Component {
 
                 <div style={{textAlign:"center"}}>
                     Successes: {this.state.successes}
-                </div>
+                </div> */}
 
             </div>
         );

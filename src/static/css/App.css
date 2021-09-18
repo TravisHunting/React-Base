@@ -25,7 +25,7 @@
 }
 
 .App-body .content-viewport {
-  border: purple 5px solid;
+  /*border: purple 5px solid;*/
   width: 80vw;
   height: 60vh;
   display: flex;
